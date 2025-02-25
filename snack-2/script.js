@@ -12,6 +12,8 @@ function getRandomNumber(max) {
 }
 
 function lanciaDado() {
+  console.log("Sto lanciando il dado");
+
   return new Promise((resolve, reject) => {
     const perc = getRandomNumber(5);
     if (perc !== 1) {
@@ -28,6 +30,7 @@ function lanciaDado() {
 
 function creaLanciaDado() {
   let lastValue = 0;
+  console.log("Sto lanciando il dado");
 
   return function () {
     return new Promise((resolve, reject) => {

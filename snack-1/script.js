@@ -12,7 +12,7 @@ function getPostTitle(id) {
   return new Promise((resolve, reject) => {
     fetch(`https://dummyjson.com/posts/${id}`)
       .then((res) => res.json())
-      .then((data) => resolve(data))
+      .then((data) => resolve(data.title))
       .catch(reject);
   });
 }
@@ -28,7 +28,11 @@ function getPost(id) {
           .then((res) => res.json())
           .then((author) => {
             /* console.log("Author: ", author); */
-            resolve({ post, author });
+
+            resolve({
+              ...post,
+              author,
+            });
           })
           .catch(reject);
       })
@@ -38,10 +42,10 @@ function getPost(id) {
 
 /* Obtain single post */
 getPostTitle(1)
-  .then((obj) => console.log("obj1", obj))
+  .then((title) => console.log("Titolo del post:", title))
   .catch((error) => console.error(error));
 
 /* Obtain post + author */
 getPost(1)
-  .then((obj) => console.log("post1", obj))
+  .then((obj) => console.log("Post 1 completo: ", obj))
   .catch((error) => console.error(error));
