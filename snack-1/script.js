@@ -28,7 +28,6 @@ function getPost(id) {
           .then((res) => res.json())
           .then((author) => {
             /* console.log("Author: ", author); */
-
             resolve({ post, author });
           })
           .catch(reject);
